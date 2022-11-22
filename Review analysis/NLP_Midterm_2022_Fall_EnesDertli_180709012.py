@@ -240,7 +240,7 @@ def improveTokenization(pos_test, neg_test, pos_train, neg_train):
 for i in range(10):
 
     reviews_pos_tokens, reviews_neg_tokens = tokenization(reviews_pos, reviews_neg)
-    
+   
     splits = split_dataset(reviews_pos_tokens, test_index[i]);
     pos_test = splits['test'];
     pos_train = splits['train'];
@@ -292,7 +292,7 @@ for i in range(10):
     result = []
     calculate_accuracy(pos_test_vectors, neg_test_vectors, pos_train_vector_avg, neg_train_vector_avg, result)
     resultList.append(result)
-    break
+    
     
 #We created a list name is all_accuracies_before_improving. Our resultList contains the result of each fold. We will use this list to calculate the accuracy of each fold. 
 all_accuracies_before_improving = []
@@ -341,6 +341,7 @@ print('Average accuracy is: ',avg_accuracy)
 
 #! Improving the model by using isalnum
 for i in range(10):
+    
     splits = split_dataset(reviews_pos_tokens, test_index[i]);
     pos_test = splits['test'];
     pos_train = splits['train'];
@@ -400,7 +401,7 @@ print("Precision: ", TP/(TP+FP))
 print('Recall:', TP/(TP+FN))
 print("F1: ", 2*TP/(2*TP+FP+FN))
 print('\n')
-avg_accuracy_improved = sum(all_accuracies_after_improving)/len(all_accuracies_after_improving)
+avg_accuracy_improved = sum(all_accuracies_after_improving)/1+len(all_accuracies_after_improving)
 
 print('Average accuracy is: ', avg_accuracy)
 print('Average accuracy after improve is: ',avg_accuracy_improved)
